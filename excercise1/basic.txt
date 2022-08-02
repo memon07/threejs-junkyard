@@ -1,0 +1,4 @@
+scene
+mesh - geometry , material (object)
+camera
+renderer
