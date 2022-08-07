@@ -1,0 +1,11 @@
+PBR ( physically based rendering) mostly roughtness and metalness
+UV unwrapping - its like unwrapping origami
+filtering and mipmapping -
+    mipmapping - process of creating a texture again and again till it comes down to 1X1
+    minfication filter algo - when the pixel of texture is bigger than the pixels in render
+    magnification filter algo 
+
+while preparing texture - 3
+    weight
+    resolution
+    data
