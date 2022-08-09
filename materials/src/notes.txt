@@ -1,0 +1,2 @@
+materials are used to put a color on each visible pixels of the geometry
+the algorithm used for that is called shaders
