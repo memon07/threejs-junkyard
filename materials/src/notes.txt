@@ -5,3 +5,7 @@ normals are info that contains the direction of the outside of the face
 used for lightening, reflection , refraction.
 
 github : nidorx/matcaps
+
+hdrihaven.com
+https://polyhaven.com/
+https://matheowis.github.io/HDRI-to-CubeMap/
