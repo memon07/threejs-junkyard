@@ -1,2 +1,7 @@
 materials are used to put a color on each visible pixels of the geometry
 the algorithm used for that is called shaders
+
+normals are info that contains the direction of the outside of the face
+used for lightening, reflection , refraction.
+
+github : nidorx/matcaps
