@@ -1,0 +1,10 @@
+we need font but as typeface
+we can use https://gero3.github.io/facetype.js/
+to create a typeface out of the fonts
+
+
+Bounding -is an info associate with the geometry that tell 
+what spaces has been taken by that geometry. it can box or sphere
+
+frustum cullings - threejs uses that cal if the obj is on the screen
+by defauth sphere bounding
