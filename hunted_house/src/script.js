@@ -52,6 +52,21 @@ const grassRoughnessTexture = textureLoader.load(
   "/textures/grass/roughness.jpg"
 );
 
+grassColorTexture.repeat.set(8, 8);
+grassAmbientOcclusionTexture.repeat.set(8, 8);
+grassNormalTexture.repeat.set(8, 8);
+grassRoughnessTexture.repeat.set(8, 8);
+
+grassColorTexture.wrapS = THREE.RepeatWrapping;
+grassAmbientOcclusionTexture.wrapS = THREE.RepeatWrapping;
+grassNormalTexture.wrapS = THREE.RepeatWrapping;
+grassRoughnessTexture.wrapS = THREE.RepeatWrapping;
+
+grassColorTexture.wrapT = THREE.RepeatWrapping;
+grassAmbientOcclusionTexture.wrapT = THREE.RepeatWrapping;
+grassNormalTexture.wrapT = THREE.RepeatWrapping;
+grassRoughnessTexture.wrapT = THREE.RepeatWrapping;
+
 /**
  * House
  */
@@ -63,7 +78,17 @@ scene.add(house);
 //Walls
 const walls = new THREE.Mesh(
   new THREE.BoxBufferGeometry(4, 2.5, 4),
-  new THREE.MeshStandardMaterial({ color: "#ac8e82" })
+  new THREE.MeshStandardMaterial({
+    map: bricksColorTexture,
+    aoMap: bricksAmbientOcclusionTexture,
+    normalMap: bricksNormalTexture,
+    roughnessMap: bricksRoughnessTexture,
+  })
+);
+walls.castShadow = true;
+walls.geometry.setAttribute(
+  "uv2",
+  new THREE.Float32BufferAttribute(walls.geometry.attributes.uv.array, 2)
 );
 walls.position.y = 2.5 / 2;
 house.add(walls);
@@ -80,7 +105,7 @@ house.add(roof);
 
 //Door
 const door = new THREE.Mesh(
-  new THREE.PlaneBufferGeometry(2, 2, 100, 100),
+  new THREE.PlaneBufferGeometry(2.2, 2.2, 100, 100),
   new THREE.MeshStandardMaterial({
     map: doorColorTexture,
     transparent: true,
@@ -158,7 +183,17 @@ for (let i = 0; i < 50; i++) {
 // Floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(20, 20),
-  new THREE.MeshStandardMaterial({ color: "#a9c388" })
+  new THREE.MeshStandardMaterial({
+    map: grassColorTexture,
+    aoMap: grassAmbientOcclusionTexture,
+    normalMap: grassNormalTexture,
+    roughnessMap: grassRoughnessTexture,
+  })
+);
+floor.receiveShadow = true;
+floor.geometry.setAttribute(
+  "uv2",
+  new THREE.Float32BufferAttribute(floor.geometry.attributes.uv.array, 2)
 );
 floor.rotation.x = -Math.PI * 0.5;
 floor.position.y = 0;
