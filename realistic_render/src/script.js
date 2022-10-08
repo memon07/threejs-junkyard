@@ -92,12 +92,29 @@ gltfLoader.load("/models/FlightHelmet/glTF/FlightHelmet.gltf", (gltf) => {
   updateAllMaterials();
 });
 
+// gltfLoader.load("/models/hamburger.glb", (gltf) => {
+//   gltf.scene.scale.set(0.3, 0.3, 0.3);
+//   gltf.scene.position.set(0, -1, 0);
+//   scene.add(gltf.scene);
+
+//   updateAllMaterials();
+// });
+
 /**
  * Lights
  */
 const directionalLight = new THREE.DirectionalLight("#ffffff", 3);
 directionalLight.position.set(0.25, 3, -2.25);
+directionalLight.castShadow = true;
+directionalLight.shadow.camera.far = 15;
+directionalLight.shadow.mapSize.set(1024, 1024);
+directionalLight.shadow.normalBias = 0.05;
 scene.add(directionalLight);
+
+const directionalLightCameraHelper = new THREE.CameraHelper(
+  directionalLight.shadow.camera
+);
+scene.add(directionalLightCameraHelper);
 
 gui
   .add(directionalLight, "intensity")
@@ -168,6 +185,7 @@ controls.enableDamping = true;
  */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
+  antialias: true,
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
